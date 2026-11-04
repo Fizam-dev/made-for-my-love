@@ -357,47 +357,23 @@ export class FlowerRingSystem {
         const textureLoader = new THREE.TextureLoader();
         textureLoader.setCrossOrigin('anonymous');
 
+        const kyraImages = [
+            'image/kyra1.jpeg',
+            'image/kyra2.jpeg',
+            'image/kyra3.jpeg',
+            'image/kyra4.jpeg',
+            'image/kyra5.jpeg',
+            'image/kyra6.jpeg'
+        ];
+
         // 1) Load 1 gambar dulu agar ring & sprite tercipta
         textureLoader.load(
-            'image/Nasuha1.jpeg',
+            kyraImages[0],
             (texture) => {
                 this.processAndCreateFlowers(texture);
 
                 // 2) Setelah sprite ada, preload banyak gambar lalu randomize material
-                this.preloadTextures([
-                    'image/Nasuha1.jpeg',
-                    'image/Nasuha2.jpeg',
-                    'image/Nasuha3.jpeg',
-                    'image/Nasuha4.jpeg',
-                    'image/Nasuha5.jpeg',
-                    'image/Nasuha6.jpeg',
-                    'image/Nasuha7.jpeg',
-                    'image/Nasuha8.jpeg',
-                    'image/Nasuha9.jpeg',
-                    'image/Nasuha10.jpeg',
-                    'image/Nasuha11.jpeg',
-                    'image/Nasuha12.jpeg',
-                    'image/Nasuha13.jpeg',
-                    'image/Nasuha14.jpeg',
-                    'image/Nasuha15.jpeg',
-                    'image/Nasuha16.jpeg',
-                    'image/Nasuha17.jpeg',
-                    'image/Nasuha18.jpeg',
-                    'image/Nasuha19.jpeg',
-                    'image/Nasuha20.jpeg',
-                    'image/Nasuha21.jpeg',
-                    'image/Nasuha22.jpeg',
-                    'image/Nasuha23.jpeg',
-                    'image/Nasuha24.jpeg',
-                    'image/Nasuha25.jpeg',
-                    'image/Nasuha26.jpeg',
-                    'image/Nasuha27.jpeg',
-                    'image/Nasuha28.jpeg',
-                    'image/Nasuha29.jpeg',
-                    'image/Nasuha30.jpeg',
-                    'image/Nasuha31.jpeg',
-                    'image/Nasuha32.jpeg'
-                ]);
+                this.preloadTextures(kyraImages);
             },
             undefined,
             (error) => {
@@ -570,7 +546,7 @@ export class FlowerRingSystem {
 
             // Giảm số lượng flowers trên iOS để tránh lag
             const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-            const numFlowers = isIOS ? 100 : 200; // Dikurangkan untuk elak lag
+            const numFlowers = isIOS ? 400 : 800; // Ditambah kepada 800 (400 di iOS) supaya lebih padat dan meriah
 
             const innerRadius = 130;
             const outerRadius = 530;
